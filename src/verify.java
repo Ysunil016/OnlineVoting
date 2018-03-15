@@ -44,6 +44,7 @@ public void OTP(String aa){
         SendSms ob = new SendSms();
         String rand = ob.sms(aa, num);
         random = rand;
+        System.out.println(random);
         message.setText("Enter OTP You Received on Registered Mobile Number");
         if( rand.equals(otp.getText())){
             setVisible(false);
