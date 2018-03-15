@@ -221,6 +221,8 @@ public void OTP(String aa){
         setVisible(false);
         FrontEnd ob = new FrontEnd();
         ob.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Please Contact to Authority");
+        System.exit(0);
     }//GEN-LAST:event_resetActionPerformed
 
     private void verifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verifyActionPerformed
