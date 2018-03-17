@@ -8,13 +8,17 @@
  *
  * @author sunil016
  */
+import java.sql.*;
 public class ElectionCommision extends javax.swing.JFrame {
-
+Connection conn;
+ResultSet rs ;
     /**
      * Creates new form ElectionCommision
      */
     public ElectionCommision() {
+        super("Election Commision");
         initComponents();
+        conn = dbConnect.connect();
     }
 
     /**

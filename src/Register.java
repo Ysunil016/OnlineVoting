@@ -181,17 +181,25 @@ Connection conn;
                 String sql3 = "Select *from OnlineVote.Aadhar where AadharNumber = '"+aad+"'";
                 ResultSet rn = stm.executeQuery(sql3);
                 if(rn.next()){
+                int age = Integer.valueOf(rn.getString("Age"));
+                if(age>18){
                 String fname = rn.getString("FatherName");
                 String pin = rn.getString("Pincode");
                 String sql = "INSERT INTO OnlineVote.Virtual(AadharNumber,Virtual,Name,PhoneNumber,FatherName,Pincode) values ('"+aad+"','"+vir+"','"+nm+"','"+num+"','"+fname+"','"+pin+"')";
                 stm.executeUpdate(sql);
                 
-                }
+                
                 String sql2 = "INSERT INTO OnlineVote.Voter(VoterID,VirtualID,AadharNumber) values ('"+voterl+"','"+vir+"','"+aad+"')";
                 stm.executeUpdate(sql2);
                 JOptionPane.showMessageDialog(null, "Virtual ID Generated "+vir);
                 id.setText("Your Generated Virtual ID is : "+vir);
-            }else{
+            
+                }else{
+                    JOptionPane.showMessageDialog(null, "You are UnderAge");
+                }}
+            }
+            
+            else{
                 JOptionPane.showMessageDialog(null, "Data MissMatch");
             }    
             }
