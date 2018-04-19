@@ -158,9 +158,11 @@ Connection conn;
             String nm = name.getText();
             String num = phone.getText();
             String aad = aadhar.getText();
-            Random r = new Random();
-            int ran = r.nextInt(9999);
-            String vir = "IND"+ran+"@aadhar";
+            timeStamp ts = new timeStamp();
+            long vir = ts.virtualKey();
+            
+            String vir2 = vir+"@aadhaar"; 
+            
             
             if(num.length()<10 || num.length()>10){
                 JOptionPane.showMessageDialog(null, "Invalid Phone Number");
@@ -185,14 +187,14 @@ Connection conn;
                 if(age>18){
                 String fname = rn.getString("FatherName");
                 String pin = rn.getString("Pincode");
-                String sql = "INSERT INTO OnlineVote.Virtual(AadharNumber,Virtual,Name,PhoneNumber,FatherName,Pincode) values ('"+aad+"','"+vir+"','"+nm+"','"+num+"','"+fname+"','"+pin+"')";
+                String sql = "INSERT INTO OnlineVote.Virtual(AadharNumber,Virtual,Name,PhoneNumber,FatherName,Pincode) values ('"+aad+"','"+vir2+"','"+nm+"','"+num+"','"+fname+"','"+pin+"')";
                 stm.executeUpdate(sql);
                 
                 
-                String sql2 = "INSERT INTO OnlineVote.Voter(VoterID,VirtualID,AadharNumber) values ('"+voterl+"','"+vir+"','"+aad+"')";
+                String sql2 = "INSERT INTO OnlineVote.Voter(VoterID,VirtualID,AadharNumber) values ('"+voterl+"','"+vir2+"','"+aad+"')";
                 stm.executeUpdate(sql2);
-                JOptionPane.showMessageDialog(null, "Virtual ID Generated "+vir);
-                id.setText("Your Generated Virtual ID is : "+vir);
+                JOptionPane.showMessageDialog(null, "Virtual ID Generated "+vir2);
+                id.setText("Your Generated Virtual ID is : "+vir2);
             
                 }else{
                     JOptionPane.showMessageDialog(null, "You are UnderAge");
